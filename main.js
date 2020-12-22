@@ -1,7 +1,7 @@
-﻿var latitude1 = getParameterByName('latitude1') || 24.9861694;
-var longitude1 = getParameterByName('longitude1') || 121.5749262;
-var latitude2 = getParameterByName('latitude2') || 25.049284;
-var longitude2 = getParameterByName('longitude2') || 121.5760947;
+﻿var latitude1 = Number(getParameterByName('latitude1')) || 25.049284;
+var longitude1 = Number(getParameterByName('longitude1')) || 121.5760947;
+var latitude2 = Number(getParameterByName('latitude2')) || 24.9861694;
+var longitude2 = Number(getParameterByName('longitude2')) || 121.5749262;
 console.log(latitude1, longitude1)
 
 var map = L.map('map', {
