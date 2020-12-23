@@ -21,8 +21,16 @@ var redIcon = new L.Icon({
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
 });
-L.marker([latitude1, longitude1], { icon: redIcon }).addTo(map);
-L.marker([latitude2, longitude2], { icon: redIcon }).addTo(map);
+L.marker(
+    [latitude1, longitude1], { icon: redIcon }
+    ).bindPopup(
+        '<p class="popup-name">' + '起始點' + '<p/>'
+    ).addTo(map);
+L.marker(
+    [latitude2, longitude2], { icon: redIcon }
+    ).bindPopup(
+        '<p class="popup-name">' + '住家' + '<p/>'
+    ).addTo(map);
 
 // var image0Icon = new L.Icon({
 //     iconUrl: 'https://raw.githubusercontent.com/fysh711426/fysh711426.github.io/master/iMaskMap/image/iMask_back_0.png',
