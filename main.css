@@ -74,6 +74,14 @@
         color: #ffffff;
     }
 
+.popup-home {
+    padding-left: 10px;
+    border-left: 5px solid rgb(218, 137, 39);
+    color: #000000;
+    font-size: large;
+    font-weight: bold;
+}
+
 .popup-name {
     padding-left: 10px;
     border-left: 5px solid rgb(16, 120, 121);
@@ -94,7 +102,7 @@
     font-weight: bold;
 }
 
-.popup-address {
+.popup-home {
     color: #000000;
     font-size: larger;
     font-weight: bold;
