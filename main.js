@@ -35,7 +35,7 @@ L.marker(
 var csv;
 $.ajax({
     type: "GET",
-    url: "WarnPlace.csv",
+    url: "./WarnPlace.csv",
     dataType: "text",
     success: function(res) {
         csv = $.csv.toObjects(res);
