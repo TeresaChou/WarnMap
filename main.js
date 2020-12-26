@@ -13,7 +13,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-var redIcon = new L.Icon({
+var orangeIcon = new L.Icon({
     iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [25, 41],
@@ -22,18 +22,44 @@ var redIcon = new L.Icon({
     shadowSize: [41, 41]
 });
 L.marker(
-    [latitude1, longitude1], { icon: redIcon }
+    [latitude1, longitude1], { icon: orangeIcon }
     ).bindPopup(
         '<p class="popup-home">' + '起始點' + '<p/>'
     ).addTo(map);
 L.marker(
-    [latitude2, longitude2], { icon: redIcon }
+    [latitude2, longitude2], { icon: orangeIcon }
     ).bindPopup(
         '<p class="popup-home">' + '住家' + '<p/>'
     ).addTo(map);
 
+var redIcon = new L.Icon({
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
+bottom_lat = Math.min(latitude1, latitude2) - 0.002;
+top_lat = Math.max(latitude1, latitude2) + 0.002;
+left_long = Math.min(longitude1, longitude2) - 0.002;
+right_long = Math.max(longitude1, longitude2) + 0.002;
+
 var csv = $.csv.toObjects(warn_place);
-console.log(csv)
+// console.log(csv)
+csv.forEach(item => {
+    if(item.Latitude >= bottom_lat && item.Latitude <= top_lat
+        && item.Longitude >= left_long && item.Longitude <= right_long) {
+            L.marker(
+                [item.Latitude, item.Longitude], { icon: redIcon }
+                ).bindPopup(
+                    '<p class="popup-place">' + item.Address + '<p/>' +
+                    '<p class="popup-text">' + '[轄區]：'+ item.DeptNm + item.BranchNm + '<p/>' +
+                    '<p class="popup-text">' + '[聯絡人]：'+ item.Contact + '<p/>'
+                ).addTo(map);
+        }
+});
 
 // var image0Icon = new L.Icon({
 //     iconUrl: 'https://raw.githubusercontent.com/fysh711426/fysh711426.github.io/master/iMaskMap/image/iMask_back_0.png',
