@@ -41,6 +41,7 @@ $.ajax({
         csv = $.csv.toObjects(res);
     }
 });
+console.log(csv)
 
 
 // var image0Icon = new L.Icon({
