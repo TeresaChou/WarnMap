@@ -32,7 +32,13 @@ L.marker(
         '<p class="popup-home">' + '住家' + '<p/>'
     ).addTo(map);
 
-getWarnLocations();
+const fs = require('fs')
+var csv = ''
+fs.readFile("./WarnPlace.csv", (err, data) => {
+    if(err) throw err;
+    console.log(data.toString());
+    csv = data.toString();
+})
 
 // var image0Icon = new L.Icon({
 //     iconUrl: 'https://raw.githubusercontent.com/fysh711426/fysh711426.github.io/master/iMaskMap/image/iMask_back_0.png',
