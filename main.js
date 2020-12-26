@@ -32,15 +32,7 @@ L.marker(
         '<p class="popup-home">' + '住家' + '<p/>'
     ).addTo(map);
 
-var csv;
-$.ajax({
-    type: "GET",
-    url: "./WarnPlace.csv",
-    dataType: "text",
-    success: function(res) {
-        csv = $.csv.toObjects(res);
-    }
-});
+var csv = $.csv.toObjects(warn_place);
 console.log(csv)
 
 // var image0Icon = new L.Icon({
