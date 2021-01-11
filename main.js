@@ -6,11 +6,11 @@ var longitude2 = Number(getParameterByName('longitude2')) || 121.5749262;
 var demo = getParameterByName('demo') == '1';
 console.log(getParameterByName('demo'));
 if(demo) {
-    lat = 25.019226;
-    long = 121.542309;
+    lat = 24.987556;
+    long = 121.569168;
     var map = L.map('map', {
         center: [lat, long],
-        zoom: 12
+        zoom: 15
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
