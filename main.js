@@ -2,7 +2,39 @@
 var longitude1 = Number(getParameterByName('longitude1')) || 121.5760947;
 var latitude2 = Number(getParameterByName('latitude2')) || 24.9861694;
 var longitude2 = Number(getParameterByName('longitude2')) || 121.5749262;
-console.log(latitude1, longitude1)
+
+var demo = getParameterByName('demo') == '1';
+console.log(getParameterByName('demo'));
+if(demo) {
+    lat = 25.019226;
+    long = 121.542309;
+    var map = L.map('map', {
+        center: [lat, long],
+        zoom: 12
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var redIcon = new L.Icon({
+        iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    L.marker(
+        [lat, long], { icon: redIcon }
+        ).bindPopup(
+            '<p class="popup-place">指南路一段道南橋下涵洞附近<p/>' +
+            '<p class="popup-text">' + '[轄區]：所屬轄區：台北市政府警察局文山第一分局<p/>' +
+            '<p class="popup-text">' + '[聯絡人]：轄區聯絡人：陳警務員、02-27592016、02-27269541<p/>'
+        ).addTo(map);
+}
+else {
 
 var map = L.map('map', {
     center: [(latitude1+latitude2)/2, (longitude1+longitude2)/2],
@@ -60,6 +92,8 @@ csv.forEach(item => {
                 ).addTo(map);
         }
 });
+
+}
 
 // var image0Icon = new L.Icon({
 //     iconUrl: 'https://raw.githubusercontent.com/fysh711426/fysh711426.github.io/master/iMaskMap/image/iMask_back_0.png',
